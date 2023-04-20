@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IAddressBook {
     public Contacts addContact(ContactDTO contactDTO);
-    public Optional<Contacts> getContactByID(int id);
+    public Contacts getContactByID(int id);
     public List<Contacts> getAllContact();
     public String deleteContactByID(int id);
     public String deleteAllContact();

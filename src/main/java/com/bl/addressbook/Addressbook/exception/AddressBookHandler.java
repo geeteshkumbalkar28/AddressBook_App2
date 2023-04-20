@@ -22,5 +22,9 @@ public class AddressBookHandler {
         return new ResponseEntity<>(responceDTO, HttpStatus.BAD_REQUEST);
 
     }
-
+    @ExceptionHandler(AddressBookCustomException.class)
+    public ResponseEntity<ResponceDTO> handleAddressBookCustomException(AddressBookCustomException exception){
+       ResponceDTO responceDTO=new ResponceDTO("Exception while handle Rest Api Call",exception.getMessage());
+       return new ResponseEntity<>(responceDTO,HttpStatus.BAD_REQUEST);
+    }
 }

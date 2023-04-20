@@ -1,6 +1,7 @@
 package com.bl.addressbook.Addressbook.services;
 
 import com.bl.addressbook.Addressbook.dto.ContactDTO;
+import com.bl.addressbook.Addressbook.exception.AddressBookCustomException;
 import com.bl.addressbook.Addressbook.model.Contacts;
 //import com.bl.addressbook.Addressbook.repository.ContactsRepo;
 import com.bl.addressbook.Addressbook.repository.ContactRepo;
@@ -25,8 +26,8 @@ public class AddressBookImp implements IAddressBook{
     }
 
     @Override
-    public Optional<Contacts> getContactByID(int id) {
-        return contactRepo.findById(id);
+    public Contacts getContactByID(int id) {
+        return contactRepo.findById(id).orElseThrow(() -> new AddressBookCustomException("Contaxt not found with id : "+id));
     }
 
     @Override

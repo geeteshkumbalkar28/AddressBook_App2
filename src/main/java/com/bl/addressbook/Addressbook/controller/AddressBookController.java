@@ -27,7 +27,7 @@ public class AddressBookController {
     }
 
     @GetMapping("/Get/{id}")
-    public Optional<Contacts> getContactsById(@PathVariable int id){
+    public Contacts getContactsById(@PathVariable int id){
         return iAddressBook.getContactByID(id);
     }
     @GetMapping("/GetAll")
