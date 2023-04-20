@@ -1,6 +1,7 @@
 package com.bl.addressbook.Addressbook.controller;
 
 import com.bl.addressbook.Addressbook.dto.ContactDTO;
+import com.bl.addressbook.Addressbook.dto.ResponceDTO;
 import com.bl.addressbook.Addressbook.model.Contacts;
 //import com.bl.addressbook.Addressbook.repository.ContactsRepo;
 import com.bl.addressbook.Addressbook.services.IAddressBook;
@@ -22,13 +23,13 @@ public class AddressBookController {
     private IAddressBook iAddressBook;
 
     @PostMapping("/save")
-    public Contacts addContact(@Valid @RequestBody ContactDTO contactDTO){
+    public ResponceDTO addContact(@Valid @RequestBody ContactDTO contactDTO){
         return iAddressBook.addContact(contactDTO);
     }
 
-    @GetMapping("/Get/{id}")
-    public Contacts getContactsById(@PathVariable int id){
-        return iAddressBook.getContactByID(id);
+    @GetMapping("/GetByToken")
+    public Contacts getContactsById(@RequestHeader String token){
+        return iAddressBook.getContactByID(token);
     }
     @GetMapping("/GetAll")
     public List<Contacts> getAllContacts(){
@@ -45,6 +46,19 @@ public class AddressBookController {
     @DeleteMapping("/DeleteAll")
     public String deleteAllContacts(){
         return iAddressBook.deleteAllContact();
+    }
+    @PostMapping("/register")
+    public ResponceDTO registerUser(@RequestBody ContactDTO contactDTO){
+        return iAddressBook.registerUser(contactDTO);
+    }
+    @GetMapping("/verify/{otp}")
+    public String verifyUser(@PathVariable int otp){
+        return iAddressBook.verifyAccount(otp);
+    }
+//    @RequestMapping(value="/login",method = RequestMethod.GET)
+    @GetMapping("/login")
+    public String login(@RequestParam int id ,@RequestParam String username,@RequestParam String password){
+        return iAddressBook.loginUser(id,username,password);
     }
 
 

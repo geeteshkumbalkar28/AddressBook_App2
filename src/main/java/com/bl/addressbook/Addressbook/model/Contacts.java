@@ -17,10 +17,15 @@ public class Contacts {
     @GeneratedValue
     private int id;
     private String firstName;
+
     private String lastName;
     private String address;
     private String city;
     private Long mobileNumber;
+    private String userName;
+    private String password;
+    private String email;
+
 
     public Contacts() {}
 
@@ -30,6 +35,9 @@ public class Contacts {
         this.address = contactDTO.address;
         this.city =contactDTO.city;
         this.mobileNumber = contactDTO.mobileNumber;
+        this.password=contactDTO.password;
+        this.userName=contactDTO.userName;
+        this.email=contactDTO.email;
     }
 
 

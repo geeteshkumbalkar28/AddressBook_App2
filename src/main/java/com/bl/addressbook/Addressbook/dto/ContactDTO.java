@@ -5,10 +5,14 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 
 @ToString
+@Getter
+@Setter
 public class ContactDTO {
 
 
@@ -32,4 +36,7 @@ public class ContactDTO {
 //    @NotEmpty(message = "mobile Cannot be empty")
 //    @Pattern(regexp = "^[6-9][0-9]{9}$" ,message = "Mobile is invalid(Ex:9855446624)")
     public Long mobileNumber;
+    public String email;
+    public String password;
+    public String userName;
 }
